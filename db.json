@@ -1,0 +1,50 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Node.js",
+      "description": "Node.js is a JavaScript runtime built on Chrome's V8 engine, used to build scalable and high-performance server-side applications."
+    },
+    {
+      "id": 2,
+      "title": "Express.js",
+      "description": "Express.js is a lightweight and flexible web framework for Node.js, ideal for building APIs and backend services."
+    },
+    {
+      "id": 3,
+      "title": "MongoDB",
+      "description": "MongoDB is a document-based NoSQL database that allows for flexible and scalable storage of structured and unstructured data."
+    },
+    {
+      "id": 4,
+      "title": "PostgreSQL",
+      "description": "PostgreSQL is a powerful, open-source relational database known for its reliability, robustness, and advanced features."
+    },
+    {
+      "id": 5,
+      "title": "TypeScript",
+      "description": "TypeScript enhances JavaScript with strong typing, making backend codebases easier to manage and less error-prone."
+    },
+    {
+      "id": 6,
+      "title": "NestJS",
+      "description": "NestJS is a progressive Node.js framework for building efficient, scalable, and maintainable server-side applications using TypeScript."
+    },
+    {
+      "id": 7,
+      "title": "Redis",
+      "description": "Redis is an in-memory key-value data store commonly used for caching, real-time analytics, and session management."
+    },
+    {
+      "id": 8,
+      "title": "Docker",
+      "description": "Docker is a platform that enables developers to package applications and dependencies into containers for reliable deployment."
+    },
+    {
+      "id": 9,
+      "title": "test",
+      "description": "test",
+      "type": "addBlog"
+    }
+  ]
+}
