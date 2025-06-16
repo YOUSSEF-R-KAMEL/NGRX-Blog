@@ -6,7 +6,6 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppState } from './store/AppState';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
 import { provideEffects } from '@ngrx/effects';
 import { BlogEffects } from './store/effects/blog.effects';
 import { provideHttpClient } from '@angular/common/http';
@@ -33,9 +32,8 @@ export const appConfig: ApplicationConfig = {
         progressBar: true
     }),
     providePrimeNG({
-        theme: {
-            preset: Aura
-        }
+        ripple: true,
+        inputStyle: 'outlined'
     }),
     provideRouterStore({serializer: CustomSerializer})
 ],

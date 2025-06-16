@@ -1,10 +1,12 @@
 {
-  "name": "lesson01",
+  "name": "NGRX-Blog",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "build:analyze": "ng build --configuration production --stats-json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "json-server": "json-server --watch db.json --port 3001",
