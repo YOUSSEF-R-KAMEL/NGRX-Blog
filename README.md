@@ -23,7 +23,7 @@ A modern Angular application built with NgRx state management, featuring a blog 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone <(https://github.com/YOUSSEF-R-KAMEL/NGRX-Blog)>
    cd NGRX-Blog
    ```
 
