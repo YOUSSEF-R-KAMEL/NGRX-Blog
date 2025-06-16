@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-color: #3b82f6;
+  --primary-color-rgb: 59, 130, 246;
+  --text-color-secondary: #6b7280;
+}
+
+/* Global Container Class */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+  // Bootstrap-like responsive breakpoints
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1320px;
+  }
+}
+
+/* Custom Toastr Styles */
+.toast-container {
+  .ngx-toastr {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    border: none;
+    font-family: inherit;
+
+    &.toast-success {
+      background-color: #22c55e;
+      color: white;
+    }
+
+    &.toast-error {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    &.toast-info {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    &.toast-warning {
+      background-color: #f59e0b;
+      color: white;
+    }
+  }
+}
+
+/* Toastr animation improvements */
+.toast-top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.toast-bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.toast-top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.toast-bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}

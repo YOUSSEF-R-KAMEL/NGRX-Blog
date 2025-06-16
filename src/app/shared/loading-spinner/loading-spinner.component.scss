@@ -1,0 +1,39 @@
+/* Custom spinner styles */
+::ng-deep .ngx-spinner-overlay {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  z-index: 9999 !important;
+}
+
+::ng-deep .ngx-spinner {
+  .la-ball-pulse {
+    color: #fff !important;
+    font-size: 32px !important;
+  }
+}
+
+::ng-deep .ngx-spinner-content {
+  p {
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    margin-top: 20px !important;
+  }
+}
+
+/* Ensure spinner is visible */
+::ng-deep .la-ball-pulse {
+  display: inline-block !important;
+}
+
+/* Responsive spinner */
+@media (max-width: 768px) {
+  ::ng-deep .ngx-spinner-content {
+    p {
+      font-size: 16px !important;
+    }
+  }
+
+  ::ng-deep .la-ball-pulse {
+    font-size: 28px !important;
+  }
+}

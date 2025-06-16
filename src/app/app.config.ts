@@ -10,6 +10,11 @@ import Aura from '@primeng/themes/aura';
 import { provideEffects } from '@ngrx/effects';
 import { BlogEffects } from './store/effects/blog.effects';
 import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
+import { AppEffect } from './store/effects/App.effect';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideRouterStore } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/customSerializer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,13 +22,21 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(AppState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects([BlogEffects]),
+    provideEffects([BlogEffects, AppEffect]),
     provideHttpClient(),
     provideAnimationsAsync(),
+    importProvidersFrom(NgxSpinnerModule),
+    provideToastr({
+        timeOut: 4000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+        progressBar: true
+    }),
     providePrimeNG({
         theme: {
             preset: Aura
         }
-    })
+    }),
+    provideRouterStore({serializer: CustomSerializer})
 ],
 };

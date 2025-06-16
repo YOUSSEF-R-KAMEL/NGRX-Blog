@@ -1,47 +1,130 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
+import {
+  map,
+  catchError,
+  exhaustMap,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { BlogService } from '../services/blog.service';
-import { loadBlog, loadBlogSuccess, loadBlogFailure, addBlog, addBlogSuccess, updateBlog, updateBlogSuccess, deleteBlog, deleteBlogSuccess } from '../actions/blog.action';
-import { IBlog } from './../models/IBlog';
+import {
+  loadBlog,
+  loadBlogSuccess,
+  loadBlogFailure,
+  addBlog,
+  addBlogSuccess,
+  updateBlog,
+  updateBlogSuccess,
+  deleteBlog,
+  deleteBlogSuccess,
+  showAlert,
+  showErrorAlert,
+} from '../actions/blog.action';
+import { ToastrService } from 'ngx-toastr';
+import { SpinnerService } from '../../shared/services/spinner.service';
 
 @Injectable()
 export class BlogEffects {
-  actions$ = inject(Actions)
-  blogService = inject(BlogService)
+  actions$ = inject(Actions);
+  blogService = inject(BlogService);
+  toastr = inject(ToastrService);
+  spinnerService = inject(SpinnerService);
 
-  loadBlogs$ = createEffect(() => this.actions$.pipe(
-    ofType(loadBlog),
-    exhaustMap(() => this.blogService.getBlogs()
-      .pipe(
-        map(blogs => loadBlogSuccess({ blogs })),
-        catchError(error => of(loadBlogFailure({ error: error.message })))
-      ))
-  ));
+  loadBlogs$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadBlog),
+      tap(() => this.spinnerService.showWithMessage('Loading blogs...')),
+      exhaustMap(() =>
+        this.blogService.getBlogs().pipe(
+          map((blogs) => {
+            this.spinnerService.hide();
+            return loadBlogSuccess({ blogs });
+          }),
+          catchError((error) => {
+            this.spinnerService.hide();
+            return of(loadBlogFailure({ error: error.message }));
+          })
+        )
+      )
+    )
+  );
 
-  addBlog$ = createEffect(() => this.actions$.pipe(
-    ofType(addBlog),
-    exhaustMap((action) => this.blogService.addBlog(action)
-      .pipe(
-        map(blog => addBlogSuccess({blogInput: action}))
-      ))
-  ));
+  addBlog$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addBlog),
+      tap(() => this.spinnerService.showWithMessage('Adding blog...')),
+      exhaustMap((action) =>
+        this.blogService
+          .addBlog(action)
+          .pipe(
+            switchMap((blog) => {
+              this.spinnerService.hide();
+              return [
+                addBlogSuccess({ blogInput: action }),
+                showAlert({ message: 'Blog added successfully!' }),
+              ];
+            }),
+            catchError((error) => {
+              this.spinnerService.hide();
+              return [
+                loadBlogFailure({ error: error.message }),
+                showErrorAlert({ message: 'Failed to add blog!' })
+              ];
+            })
+          )
+      )
+    )
+  );
 
-  updateBlog$ = createEffect(() => this.actions$.pipe(
-    ofType(updateBlog),
-    exhaustMap((action) => this.blogService.updateBlog(action)
-      .pipe(
-        map(blog => updateBlogSuccess({blogInput: action})),
-        catchError(error => of(loadBlogFailure({ error: error.message })))
-      ))
-  ));
- deleteBlog$ = createEffect(() => this.actions$.pipe(
-    ofType(deleteBlog),
-    exhaustMap((action) => this.blogService.deleteBlog(action.id)
-      .pipe(
-        map(blog => deleteBlogSuccess({id: action.id})),
-        catchError(error => of(loadBlogFailure({ error: error.message })))
-      ))
-  ));
+  updateBlog$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateBlog),
+      tap(() => this.spinnerService.showWithMessage('Updating blog...')),
+      exhaustMap((action) =>
+        this.blogService.updateBlog(action).pipe(
+          switchMap((blog) => {
+            this.spinnerService.hide();
+            return [
+              updateBlogSuccess({ blogInput: action }),
+              showAlert({ message: 'Blog updated successfully!' }),
+            ];
+          }),
+          catchError((error) => {
+            this.spinnerService.hide();
+            return [
+              loadBlogFailure({ error: error.message }),
+              showErrorAlert({ message: 'Failed to update blog!' })
+            ];
+          })
+        )
+      )
+    )
+  );
+
+  deleteBlog$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteBlog),
+      tap(() => this.spinnerService.showWithMessage('Deleting blog...')),
+      exhaustMap((action) =>
+        this.blogService.deleteBlog(action.id).pipe(
+          switchMap((blog) => {
+            this.spinnerService.hide();
+            return [
+              deleteBlogSuccess({ id: action.id }),
+              showAlert({ message: 'Blog deleted successfully!' }),
+            ];
+          }),
+          catchError((error) => {
+            this.spinnerService.hide();
+            return [
+              loadBlogFailure({ error: error.message }),
+              showErrorAlert({ message: 'Failed to delete blog!' })
+            ];
+          })
+        )
+      )
+    )
+  );
 }

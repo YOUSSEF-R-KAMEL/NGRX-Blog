@@ -10,3 +10,6 @@ export const updateBlog = createAction('updateBlog', props<IBlog>())
 export const updateBlogSuccess = createAction('updateBlogSuccess', props<{blogInput: IBlog}>())
 export const deleteBlog = createAction('deleteBlog', props<{id: number}>())
 export const deleteBlogSuccess = createAction('deleteBlogSuccess', props<{id: number}>())
+
+export const showAlert = createAction('showAlert', props<{message: string}>())
+export const showErrorAlert = createAction('showErrorAlert', props<{message: string}>())

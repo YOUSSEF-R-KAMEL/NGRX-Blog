@@ -1,28 +1,25 @@
 import { Component, inject } from '@angular/core';
-import { IBlog } from '../store/models/IBlog';
 import { Store } from '@ngrx/store';
-import { getBlog } from '../store/selectors/blog.selector';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {
-  addBlog,
-  updateBlog,
-  deleteBlog,
-  loadBlog,
-} from '../store/actions/blog.action';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { IBlog } from '../../store/models/IBlog';
+import { SpinnerService } from '../../shared/services/spinner.service';
+import { getBlog } from '../../store/selectors/blog.selector';
+import { addBlog, deleteBlog, loadBlog, updateBlog } from '../../store/actions/blog.action';
 
 @Component({
   selector: 'app-blog',
   imports: [
-    ButtonModule,
+  ButtonModule,
     DialogModule,
     InputTextModule,
     TextareaModule,
@@ -39,6 +36,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 export class BlogComponent {
   store = inject(Store<IBlog[]>);
   confirmationService = inject(ConfirmationService);
+  toastr = inject(ToastrService);
+  spinnerService = inject(SpinnerService);
   blogList: IBlog[] = [];
   hasError = false;
   errorMessage = '';
@@ -100,6 +99,10 @@ export class BlogComponent {
       this.store.dispatch(addBlog(this.newBlog))
       console.log('New blog to add:', this.newBlog);
       this.hideDialog();
+      // You can also show a toastr notification directly here if needed
+      // this.toastr.info('Blog is being added...', 'Info');
+    } else {
+      this.toastr.warning('Please fill in both title and description', 'Warning');
     }
   }
 
@@ -125,6 +128,8 @@ export class BlogComponent {
       this.store.dispatch(updateBlog(this.editingBlog));
       console.log('Edited blog to save:', this.editingBlog);
       this.hideEditDialog();
+    } else {
+      this.toastr.warning('Please fill in both title and description', 'Warning');
     }
   }
 
@@ -141,6 +146,7 @@ export class BlogComponent {
       reject: () => {
         // User cancelled deletion
         console.log('Delete cancelled');
+        this.toastr.info('Delete operation cancelled', 'Info');
       },
     });
   }
@@ -149,6 +155,8 @@ export class BlogComponent {
   retryConnection() {
     this.hasError = false;
     this.errorMessage = '';
+    this.spinnerService.showWithMessage('Reconnecting to server...');
     this.store.dispatch(loadBlog());
+    this.toastr.info('Attempting to reconnect...', 'Info');
   }
 }

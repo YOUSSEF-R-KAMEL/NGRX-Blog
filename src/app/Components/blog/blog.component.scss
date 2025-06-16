@@ -49,6 +49,15 @@
   border-top: 1px solid var(--surface-border);
 }
 
+.p-button-sm {
+  padding: 0 !important;
+}
+
+.p-button-sm:last-child {
+  margin-left: .7rem !important;
+}
+
+
 // Custom toast styling
 ::ng-deep .custom-toast {
   .p-toast-message {

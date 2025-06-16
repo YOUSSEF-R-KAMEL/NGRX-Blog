@@ -3,48 +3,253 @@
     {
       "id": 1,
       "title": "Node.js",
-      "description": "Node.js is a JavaScript runtime built on Chrome's V8 engine, used to build scalable and high-performance server-side applications."
+      "description": "JavaScript runtime for building fast, scalable server applications."
     },
     {
       "id": 2,
       "title": "Express.js",
-      "description": "Express.js is a lightweight and flexible web framework for Node.js, ideal for building APIs and backend services."
+      "description": "Minimalist web framework for Node.js to build APIs and web apps."
     },
     {
       "id": 3,
-      "title": "MongoDB",
-      "description": "MongoDB is a document-based NoSQL database that allows for flexible and scalable storage of structured and unstructured data."
+      "title": "NestJS ",
+      "description": "Progressive Node.js framework using TypeScript for scalable applications.",
+      "type": "updateBlog"
     },
     {
       "id": 4,
-      "title": "PostgreSQL",
-      "description": "PostgreSQL is a powerful, open-source relational database known for its reliability, robustness, and advanced features."
+      "title": "MongoDB",
+      "description": "NoSQL database that stores data in flexible, JSON-like documents."
     },
     {
       "id": 5,
-      "title": "TypeScript",
-      "description": "TypeScript enhances JavaScript with strong typing, making backend codebases easier to manage and less error-prone."
+      "title": "PostgreSQL",
+      "description": "Advanced open-source relational database with powerful features."
     },
     {
       "id": 6,
-      "title": "NestJS",
-      "description": "NestJS is a progressive Node.js framework for building efficient, scalable, and maintainable server-side applications using TypeScript."
+      "title": "MySQL",
+      "description": "Popular open-source relational database system used in many stacks."
     },
     {
       "id": 7,
       "title": "Redis",
-      "description": "Redis is an in-memory key-value data store commonly used for caching, real-time analytics, and session management."
+      "description": "In-memory key-value store used for caching and real-time data."
     },
     {
       "id": 8,
-      "title": "Docker",
-      "description": "Docker is a platform that enables developers to package applications and dependencies into containers for reliable deployment."
+      "title": "Mongoose",
+      "description": "MongoDB ODM for managing relationships and validations in Node.js."
     },
     {
       "id": 9,
-      "title": "test",
-      "description": "test",
-      "type": "addBlog"
+      "title": "Prisma",
+      "description": "Next-gen ORM for TypeScript and Node.js, supporting SQL databases."
+    },
+    {
+      "id": 10,
+      "title": "TypeORM",
+      "description": "ORM for TypeScript and JavaScript, supports Active Record & Data Mapper."
+    },
+    {
+      "id": 11,
+      "title": "Sequelize",
+      "description": "Promise-based ORM for Node.js supporting PostgreSQL, MySQL, and more."
+    },
+    {
+      "id": 12,
+      "title": "JWT",
+      "description": "JSON Web Tokens for stateless user authentication and authorization."
+    },
+    {
+      "id": 13,
+      "title": "Passport.js",
+      "description": "Authentication middleware for Node.js supporting many strategies."
+    },
+    {
+      "id": 14,
+      "title": "Bcrypt",
+      "description": "Library to hash and compare passwords securely."
+    },
+    {
+      "id": 15,
+      "title": "Docker",
+      "description": "Tool to containerize applications and their dependencies."
+    },
+    {
+      "id": 16,
+      "title": "Kubernetes",
+      "description": "Container orchestration platform for automating deployment and scaling."
+    },
+    {
+      "id": 17,
+      "title": "RabbitMQ",
+      "description": "Message broker for asynchronous communication between services."
+    },
+    {
+      "id": 18,
+      "title": "Kafka",
+      "description": "Distributed event streaming platform for high-throughput messaging."
+    },
+    {
+      "id": 19,
+      "title": "GraphQL",
+      "description": "Query language for APIs enabling clients to request specific data."
+    },
+    {
+      "id": 20,
+      "title": "REST API",
+      "description": "Architectural style using HTTP verbs to create and manage resources."
+    },
+    {
+      "id": 21,
+      "title": "Supabase",
+      "description": "Open-source Firebase alternative using PostgreSQL and real-time APIs."
+    },
+    {
+      "id": 22,
+      "title": "Firebase",
+      "description": "Backend-as-a-Service (BaaS) offering real-time DB and authentication."
+    },
+    {
+      "id": 23,
+      "title": "NGINX",
+      "description": "High-performance web server, reverse proxy, and load balancer."
+    },
+    {
+      "id": 24,
+      "title": "Apache",
+      "description": "Widely-used open-source web server software."
+    },
+    {
+      "id": 25,
+      "title": "PM2",
+      "description": "Process manager for Node.js to keep apps running and monitor them."
+    },
+    {
+      "id": 26,
+      "title": "CORS",
+      "description": "Security feature allowing cross-origin requests in web apps."
+    },
+    {
+      "id": 27,
+      "title": "Zod",
+      "description": "TypeScript-first schema declaration and validation library."
+    },
+    {
+      "id": 28,
+      "title": "tRPC",
+      "description": "Type-safe APIs using TypeScript without needing a schema definition."
+    },
+    {
+      "id": 29,
+      "title": "OpenAPI",
+      "description": "Standard for describing REST APIs using a structured format."
+    },
+    {
+      "id": 30,
+      "title": "Swagger",
+      "description": "Tool for documenting and testing RESTful APIs."
+    },
+    {
+      "id": 31,
+      "title": "OAuth 2.0",
+      "description": "Standard protocol for delegated authorization and access."
+    },
+    {
+      "id": 32,
+      "title": "SAML",
+      "description": "Security assertion markup language used for single sign-on."
+    },
+    {
+      "id": 33,
+      "title": "Keycloak",
+      "description": "Open-source identity and access management tool."
+    },
+    {
+      "id": 34,
+      "title": "ElasticSearch",
+      "description": "Search and analytics engine for large-scale data."
+    },
+    {
+      "id": 35,
+      "title": "Logstash",
+      "description": "Data processing pipeline for ingesting logs and events."
+    },
+    {
+      "id": 36,
+      "title": "Fluentd",
+      "description": "Log collector that helps unify log data collection and consumption."
+    },
+    {
+      "id": 37,
+      "title": "CI/CD",
+      "description": "Continuous Integration & Continuous Deployment for fast, safe changes."
+    },
+    {
+      "id": 38,
+      "title": "GitHub Actions",
+      "description": "CI/CD automation directly within GitHub repositories."
+    },
+    {
+      "id": 39,
+      "title": "Jenkins",
+      "description": "Automation server used to build, test, and deploy software."
+    },
+    {
+      "id": 40,
+      "title": "CircleCI",
+      "description": "Continuous integration and delivery platform for DevOps teams."
+    },
+    {
+      "id": 41,
+      "title": "Cloudflare",
+      "description": "Web performance and security company offering CDN and DDoS protection."
+    },
+    {
+      "id": 42,
+      "title": "Vercel",
+      "description": "Platform for frontend and backend deployments with serverless support."
+    },
+    {
+      "id": 43,
+      "title": "Heroku",
+      "description": "Platform-as-a-Service that enables easy backend app deployment."
+    },
+    {
+      "id": 44,
+      "title": "Amazon RDS",
+      "description": "Managed relational database service from AWS."
+    },
+    {
+      "id": 45,
+      "title": "AWS Lambda",
+      "description": "Run backend code in response to events without managing servers."
+    },
+    {
+      "id": 46,
+      "title": "DigitalOcean",
+      "description": "Cloud infrastructure provider with simple server deployment."
+    },
+    {
+      "id": 47,
+      "title": "VPS",
+      "description": "Virtual Private Server for hosting backend applications independently."
+    },
+    {
+      "id": 48,
+      "title": "Postman",
+      "description": "API platform for testing, documenting, and collaborating on APIs."
+    },
+    {
+      "id": 49,
+      "title": "Insomnia",
+      "description": "API client for REST and GraphQL debugging and testing."
+    },
+    {
+      "id": 50,
+      "title": "Load Balancer",
+      "description": "Distributes network traffic across multiple servers for scalability."
     }
   ]
 }

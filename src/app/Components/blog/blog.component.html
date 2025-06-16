@@ -1,4 +1,4 @@
-<div class="flex justify-content-center mb-4">
+<div class="flex justify-content-start mb-4">
   <p-button label="Add Blog" (onClick)="showAddBlogDialog()" />
 </div>
 
@@ -136,10 +136,10 @@
 <div class="grid" *ngIf="!hasError">
   @for (blog of blogList; track $index) {
     <div class="col-12 sm:col-12 md:col-6 lg:col-3">
-      <div class="card border-round p-4">
+      <div class="card border-round">
         <h3 class="text-primary text-xl font-bold mb-2 mt-0">{{ blog.title }}</h3>
         <p class="line-height-3 mb-3">{{ blog.description }}</p>
-        <div class="btns absolute flex justify-content-end">
+        <div class="btns flex justify-content-end">
           <p-button
             icon="pi pi-pencil"
             (onClick)="showEditBlogDialog(blog)"

@@ -1,36 +1,3 @@
-<div class="container mx-auto p-4">
-  <div class="text-center mb-4">
-    <h1 class="text-3xl font-bold text-primary">Count: {{ count }}</h1>
-  </div>
-
-  <div class="flex flex-column align-items-center gap-3 mb-4">
-    <div class="flex gap-2 align-items-center">
-      <input type="number" [(ngModel)]="value" class="p-inputtext" placeholder="Enter value" />
-      <p-dropdown
-        [(ngModel)]="selectedOption"
-        [options]="options"
-        optionLabel="label"
-        optionValue="value"
-        placeholder="Select action"
-        class="w-12rem">
-      </p-dropdown>
-      <p-button label="Click" (onClick)="onClick()" />
-    </div>
-  </div>
-
-  <div class="flex flex-column align-items-center gap-3 mb-4">
-    <div class="flex gap-2 align-items-center">
-      <input type="text" [(ngModel)]="name" class="p-inputtext" placeholder="Enter welcome message" />
-      <p-button label="Welcome" (onClick)="onWelcome()" />
-    </div>
-    <h2 class="text-xl text-secondary">{{ name }}</h2>
-  </div>
-
-  <app-blog></app-blog>
-</div>
-
-<!-- <button (click)="increase()">increase</button> -->
-<!-- <button (click)="decrease()">decrease</button> -->
-<!-- <button (click)="reset()">reset</button>
-<input type="number" [(ngModel)]="value" />
-<button (click)="customIncrease()">customIncrease</button> -->
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<app-loading-spinner></app-loading-spinner>
