@@ -14,6 +14,7 @@ import { AppEffect } from './store/effects/App.effect';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { provideRouterStore } from '@ngrx/router-store';
 import { CustomSerializer } from './store/router/customSerializer';
+import Aura from '@primeng/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,9 +33,10 @@ export const appConfig: ApplicationConfig = {
         progressBar: true
     }),
     providePrimeNG({
-        ripple: true,
-        inputStyle: 'outlined'
-    }),
+      theme: {
+          preset: Aura
+      }
+  }),
     provideRouterStore({serializer: CustomSerializer})
 ],
 };
